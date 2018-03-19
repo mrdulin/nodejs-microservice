@@ -13,7 +13,7 @@ module.exports = function productPlugin(options) {
    * 获取所有商品列表
    */
   seneca.add({ area, action: actionType.fetch }, (args, done) => {
-    const products = this.make('products');
+    const products = this.make$('products');
     products.list$({}, done);
   });
 
@@ -21,7 +21,7 @@ module.exports = function productPlugin(options) {
    * 根据分类获取商品列表
    */
   seneca.add({ area, action: actionType.fetch, criteria: 'byCategory' }, (args, done) => {
-    const products = this.make('products');
+    const products = this.make$('products');
     products.list$({ category: args.category }, done);
   });
 
@@ -29,7 +29,7 @@ module.exports = function productPlugin(options) {
    * 根据id获取商品
    */
   seneca.add({ area, action: actionType.fetch, criteria: 'byId' }, (args, done) => {
-    const products = this.make('products');
+    const products = this.make$('products');
     products.load$(args.id, done);
   });
 
@@ -37,7 +37,7 @@ module.exports = function productPlugin(options) {
    * 添加商品
    */
   seneca.add({ area, action: actionType.add }, (args, done) => {
-    const products = this.make('products');
+    const products = this.make$('products');
     products.category = args.category;
     products.name = args.name;
     products.description = args.description;
@@ -51,7 +51,7 @@ module.exports = function productPlugin(options) {
    * 根据id删除商品
    */
   seneca.add({ area, action: actionType.remove }, (args, done) => {
-    const product = this.make('products');
+    const product = this.make$('products');
     product.remove$(args.id, err => {
       done(err, null);
     });

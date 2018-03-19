@@ -1,35 +1,33 @@
 const seneca = require('seneca')();
+const SenecaWeb = require('seneca-web');
 const express = require('express');
 const bodyParser = require('body-parser');
 
+const routes = require('./routes');
 const productPlugin = require('./plugins/product');
 
-seneca.use(productPlugin);
-seneca.use('mongo-store', {
-  name: 'seneca',
-  host: '127.0.0.1',
-  port: '27017'
-});
+const app = express();
+const port = 3000;
 
-seneca.ready(err => {
-  const app = express();
-  const port = 3000;
-  app.use(bodyParser.json());
-  app.use(seneca.export('web'));
+app.use(bodyParser.json());
 
-  app.listen(port, () => {
-    console.log(`Server is listening on http://localhost:${port}`);
+seneca
+  // .use('mongo-store', {
+  //   name: 'seneca',
+  //   host: '127.0.0.1',
+  //   port: '27017'
+  // })
+  // .use(productPlugin)
+  .use(SenecaWeb, {
+    routes,
+    context: app,
+    adapter: require('seneca-web-adapter-express'),
+    options: { parseBody: false }
+  })
+  .ready(err => {
+    const server = seneca.export('web/context')();
+
+    server.listen(port, () => {
+      console.log(`Server is listening on http://localhost:${port}`);
+    });
   });
-
-  seneca.act('role:web', {
-    use: {
-      prefix: '/products',
-      pin: { area: 'product', action: '*' },
-      map: {
-        fetch: { GET: true },
-        edit: { GET: false, POST: true },
-        delete: { GET: false, DELETE: true }
-      }
-    }
-  });
-});
