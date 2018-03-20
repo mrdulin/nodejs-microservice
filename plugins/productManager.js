@@ -1,4 +1,4 @@
-module.exports = function productPlugin(options) {
+module.exports = function productManager(options) {
   const seneca = this;
   console.log(options);
   const area = 'product';
@@ -8,6 +8,10 @@ module.exports = function productPlugin(options) {
     remove: 'remove',
     edit: 'edit'
   };
+
+  seneca.add({ area, action: 'test' }, (args, done) => {
+    done(null, { msg: '服务测试' });
+  });
 
   /**
    * 获取所有商品列表

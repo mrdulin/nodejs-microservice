@@ -4,11 +4,11 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const expressAdapter = require('seneca-web-adapter-express');
 
-const routes = require('./routes');
-const productPlugin = require('./plugins/product');
+const api = require('./plugins/api');
+// const routes = require('./routes');
 
-const app = express();
 const port = 3000;
+const app = express();
 
 app.use(bodyParser.json());
 
@@ -18,15 +18,13 @@ seneca
   //   host: '127.0.0.1',
   //   port: '27017'
   // })
-  .use('basic')
-  .use('entity')
-  .use(productPlugin)
   .use(SenecaWeb, {
-    routes,
+    // routes,
     context: app,
     adapter: expressAdapter,
     options: { parseBody: false }
   })
+  .use(api)
   .ready(err => {
     if (err) throw err;
     const server = seneca.export('web/context')();
