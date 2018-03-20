@@ -2,13 +2,15 @@
 
 使用`seneca`及相关插件, `express`, `node.js`，`mongodb`搭建微服务
 
-**说明：**
+**环境:**
 
 * node: v8.4.0
 
 * npm: v5.3.0
 
 * 其他依赖，见`package.json`
+
+**说明：**
 
 * `plugins`: `seneca`插件目录
 
