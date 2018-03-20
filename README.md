@@ -4,9 +4,11 @@
 
 **说明：**
 
-node: v8.4.0
-npm: v5.3.0
-其他依赖，见`package.json`
+* node: v8.4.0
+
+* npm: v5.3.0
+
+* 其他依赖，见`package.json`
 
 * `plugins`: `seneca`插件目录
 
