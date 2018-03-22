@@ -4,6 +4,10 @@ module.exports = {
    * http://pm2.keymetrics.io/docs/usage/application-declaration/
    */
   apps: [
+    {
+      name: 'productManager microservice',
+      script: 'services/productManager.js'
+    },
     // First application
     {
       name: 'API',
@@ -41,7 +45,7 @@ module.exports = {
       host: [
         {
           host: 'localhost',
-          port: 3001
+          port: 3000
         }
       ],
       ref: 'origin/master',
