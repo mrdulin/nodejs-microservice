@@ -7,7 +7,9 @@
     "test": "nyc --reporter=html --reporter=text mocha test/**/*.spec.js --timeout=3000",
     "test:e2e": "nyc --reporter=html --reporter=text mocha e2e/**/*.e2e.js --timeout=3000",
     "posttest": "nyc check-coverage --lines 75 --functions 75 --branches 75",
-    "start": "node index.js"
+    "start": "node index.js",
+    "predeploy-dev": "pm2 deploy ecosystem.config.js dev setup",
+    "deploy-dev": "pm2 deploy ecosystem.config.js dev"
   },
   "repository": {
     "type": "git",
