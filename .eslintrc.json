@@ -6,6 +6,12 @@
     "arrow-parens": "off",
     "comma-dangle": ["error", "never"],
     "max-len": "off",
-    "arrow-body-style": "off"
+    "arrow-body-style": "off",
+    "no-mixed-operators": "off",
+    "no-unused-expressions": "off"
+  },
+  "env": {
+    "node": true,
+    "mocha": true
   }
 }
