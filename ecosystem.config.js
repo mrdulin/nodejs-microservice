@@ -38,7 +38,12 @@ module.exports = {
     // },
     dev: {
       user: 'node',
-      host: 'localhost',
+      host: [
+        {
+          host: 'localhost',
+          port: 3001
+        }
+      ],
       ref: 'origin/master',
       repo: 'https://github.com/mrdulin/nodejs-microservice.git',
       path: '/Users/elsa/development',
