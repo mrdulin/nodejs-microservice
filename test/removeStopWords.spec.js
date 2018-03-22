@@ -23,12 +23,6 @@ describe('when executing "removeStopWords"', () => {
     });
   });
 
-  // it('should not fail with null as input', () => {
-  //   removeStopWords(null, (err, response) => {
-  //     expect(response).to.
-  //   });
-  // })
-
   it('should fail if the input is not a string', () => {
     try {
       removeStopWords(5, () => {

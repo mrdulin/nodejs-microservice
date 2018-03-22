@@ -8,7 +8,11 @@
     "max-len": "off",
     "arrow-body-style": "off",
     "no-mixed-operators": "off",
-    "no-unused-expressions": "off"
+    "no-unused-expressions": "off",
+    "import/no-extraneous-dependencies": [
+      "error",
+      { "devDependencies": ["**/*.test.js", "**/*.spec.js", "**/*.e2e.js"] }
+    ]
   },
   "env": {
     "node": true,

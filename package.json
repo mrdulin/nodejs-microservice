@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "nyc --reporter=html --reporter=text mocha --timeout=3000",
+    "test": "nyc --reporter=html --reporter=text mocha test/**/*.spec.js --timeout=3000",
+    "test:e2e": "nyc --reporter=html --reporter=text mocha e2e/**/*.e2e.js --timeout=3000",
+    "posttest": "nyc check-coverage --lines 75 --functions 75 --branches 75",
     "start": "node index.js"
   },
   "repository": {
@@ -30,6 +32,7 @@
   },
   "devDependencies": {
     "chai": "^4.1.2",
+    "chai-http": "^3.0.0",
     "eslint": "^4.19.0",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.9.0",
