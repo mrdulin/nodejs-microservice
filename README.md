@@ -45,3 +45,5 @@ curl -d  '{"area": "product", "action": "test"}' http://localhost:3001/act
 5.  `npm test:e2e`执行端到端测试
 
 6.  `pm2 start plugins/memoryLeak.js`启动应用，并使用`pm2 link secretKey publicKey [machine name]`将 pm2 的数据推送到 keymetrics
+
+7.  `npm run deploy-dev`，将应用部署到本地环境（部署目录，我的是`/home/elsa/development`），然后访问`http://localhost:3000/api/products`查看接口
